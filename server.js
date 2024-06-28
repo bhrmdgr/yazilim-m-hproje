@@ -17,17 +17,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-
 const secretKey = process.env.SECRET_KEY;
 console.log('Secret Key:', secretKey);
 
 app.use('/images', express.static(path.join(__dirname, 'tasarım-figma')));
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
-});
 
 db.connect(err => {
   if (err) {
