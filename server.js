@@ -20,7 +20,13 @@ const upload = multer({ storage: storage });
 const secretKey = process.env.SECRET_KEY;
 console.log('Secret Key:', secretKey);
 
-app.use('/images', express.static(path.join(__dirname, 'tasarım-figma')));
+app.use('/images', express.static(path.join(__dirname, 'tasarım-figma')));nothing to commit, working tree clean
+PS C:\Users\Nur Kurt\Desktop\proje2024> git status
+>> 
+On branch main
+nothing to commit, working tree clean
+PS C:\Users\Nur Kurt\Desktop\proje2024> 
+
 db.connect(err => {
   if (err) {
     console.error('MySQL bağlantı hatası: ', err);
