@@ -21,7 +21,6 @@ const secretKey = process.env.SECRET_KEY;
 console.log('Secret Key:', secretKey);
 
 app.use('/images', express.static(path.join(__dirname, 'tasarım-figma')));
-
 db.connect(err => {
   if (err) {
     console.error('MySQL bağlantı hatası: ', err);
