@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container-kayitol">
+        <form id="registerForm">
+            <h2>Kayıt Ol</h2>
+            <div class="input-group">
+                <div class="label"><label for="username">Kullanıcı Adı:</label></div>
+                <input type="text" class="username-input" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <div class="label"><label for="email">E-posta:</label></div>
+                <input type="email" class="email-input" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <div class="label"><label for="password">Şifre:</label></div>
+                <input type="password" class="password-input" id="password" name="password" required>
+            </div>
+            <button type="submit" class="kayitol-button">Kayıt Ol</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            fetch('http://localhost:3000/kayitol', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                    window.location.href = 'girisyap.html';
+                } else if (data.error) {
+                    alert(data.error);
+                } else {
+                    alert('Bilinmeyen bir hata oluştu');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

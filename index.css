@@ -1,0 +1,767 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+  
+    
+
+
+}
+
+.desktop1-logo {
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;
+}
+.desktop1-logo:hover {
+    cursor: pointer;
+}
+
+#search-app {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.desktop1-search {
+    width: 20px;
+    
+}
+
+#search-app input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    margin-left: 5px;
+    width: 100%;
+    
+}
+
+.auth-buttons {
+    display: flex;
+}
+
+.login-button {
+    margin-right: 80px;
+}
+.güncelle-button,
+.tsil-button,
+.tarifekle-button,
+.register-button,
+.login-button{
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #333;
+    
+    color: #fff;
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.account-button {
+    margin-right: 50px;
+    padding: 10px 15px;
+    background-color: #333;
+    
+    color: #fff;
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background-color: #555;
+   
+}
+
+.login-button:hover {
+    background-color: #555;
+    
+}
+
+.account-button:hover {
+    background-color: #555;
+}
+
+.desktop1-categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    background-color: #333;
+
+    margin-bottom: 20px;
+
+
+}
+
+.desktop1-categories a {
+    text-decoration: none;
+    
+    color: inherit;
+    
+}
+
+
+.desktop1-categories span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    padding: 1px;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+.desktop1-categories span:hover {
+    color: #555;
+
+
+}
+
+.tüm-tarifler-button{
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: inherit;
+    background-color: transparent;
+   
+
+}
+.tüm-tarifler-button:hover{
+    transform: scale(1.2);
+}
+
+
+.basliklar {
+    text-align: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.category {
+    display: inline-block;
+    color: inherit;
+    margin: 0 10px;
+    margin-bottom: 20px;
+
+}
+
+.category a{
+    text-decoration: none;
+    color: inherit;
+}
+.food-image {
+    width: 300px;
+    color: inherit;
+    height: auto;
+   
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 0;
+
+}
+
+
+.food-name {
+    
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 20px;
+   
+}
+
+.ana-yemek,
+.corba,
+.tatlı,
+.kahvaltılık,
+.salata-meze,
+.hamur-isi,
+.bugün-ne-pisirsem,
+.arama-sonuclari,
+.icecek {
+
+    display: inline-block;
+    float: left;
+    margin-left: 30px;
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+   
+}
+
+.hr-line {
+    width: 80%;
+    clear: both;
+    margin: 10px auto;
+
+    border-top: 1px solid #555;
+
+    margin-bottom: 20px;
+
+}
+.page-navigation-ana-yemek{
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    margin-top: 20px;
+}
+.page-navigation-ana-yemek .active {
+    font-weight: bold;
+
+}
+.page-navigation-ana-yemek span {
+    cursor: pointer;
+    margin: 0 5px;
+}
+.ana-yemek-page2 span::after {
+
+    margin-left: 5px;
+}
+
+.ana-yemek-page3::after {
+
+    margin-left: 5px;
+
+}
+
+.page-navigation {
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    margin-top: 20px;
+}
+
+.page-navigation .active {
+    font-weight: bold;
+
+}
+
+.page-navigation span {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.desktop1-text42 span::after {
+
+    margin-left: 5px;
+}
+
+.desktop1-text44::after {
+
+    margin-left: 5px;
+
+}
+
+.footer {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+}
+
+.contact-info,
+.contact-form {
+    width: 45%;
+}
+
+.form-inputs {
+    width: 45%;
+}
+
+.form-description {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: none;
+}
+
+.form-title {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-form {
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.contact-info .info-detail {
+
+    margin-top: 30px;
+
+}
+
+.social-icons {
+    display: flex;
+    justify-content: flex-start;
+    
+    align-items: center;
+}
+
+.social-icons img {
+    width: 40px;
+    margin-right: 30px;
+    margin-top: 50px;
+
+    height: auto;
+
+}
+
+.social-icons a {
+    margin-right: 10px;
+}
+
+.gönder-button {
+    padding: 8px 50px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+   
+   
+}
+
+.gönder-button:hover {
+    background-color: #555;
+}
+
+.hr-line {
+    width: 100%;
+    margin: 10px auto;
+    border-top: 1px solid #ccc;
+}
+.container-giris {
+    width: 1200px;
+    height: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 10% auto 0;
+    background-image: url('tasarım-figma/Adsız\ tasarım.png'); 
+    background-size: cover;
+    background-position: center; 
+    color: white; 
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    margin-right: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 650px;
+    
+}
+
+.username-input,
+.password-input {
+    width: 40%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-left: 650px;
+}
+.girisyap-button {
+    padding: 8px 50px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+    margin-left: 650px ;
+
+    
+   
+}
+.girisyap-button:hover{
+
+    background-color: #555;
+}
+
+.container-giris h2{
+    text-align: center;
+    margin-left: 215px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.container-kayitol {
+    width: 1200px;
+    height: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 13% auto 0;
+    background-image: url('tasarım-figma/Adsız\ tasarım.png'); 
+    background-size: cover; 
+    background-position: center; 
+    color: white; 
+}
+
+
+.username-kayit,
+.email-input,
+.password-kayit{
+    width: 40%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-left: 650px;
+    margin-right: 20px;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 650px;
+    
+}
+.kayitol-button {
+    padding: 10px 50px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px ;
+    margin-bottom: 10px;
+    margin-left: 650px;
+    
+}
+
+.kayitol-button:hover {
+    background-color: #555;
+}
+
+.container-kayitol h2 {
+    text-align: center;
+    margin-left: 206px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.recipe-container {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-title {
+    color: #333;
+    text-align: center;
+}
+.recipe-images {
+    text-align: center;
+}
+
+.recipe-images img {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.favorite-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.favorite-button:hover {
+    background-color: #555;
+}
+
+.ingredients, .preparation, .presentation {
+    margin-bottom: 20px;
+}
+
+.preparation,
+.presentation, 
+.ingredients h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+.star {
+    color: #ccc; /* Yıldız rengi */
+    cursor: pointer; /* İmleç tipini değiştir */
+    transition: color 0.3s; /* Renk değişimi için geçiş efekti */
+}
+
+.star:hover,
+.star.selected {
+    color: #000; /* Seçili yıldızlar siyah olsun */
+}
+.add-comment textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.add-comment button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.add-comment button:hover {
+    background-color: #555;
+}
+#account-app {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#account-app h2 {
+    color: #333;
+    text-align: center;
+}
+.account-info {
+    margin-bottom: 20px;
+}
+
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comments {
+    margin-top: 20px;
+  }
+  
+  .comments h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .comments ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .comments li {
+    background: #f9f9f9;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .comments .comment {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .comments .comment-user {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .comments .comment-content {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .add-comment {
+    margin-top: 20px;
+  }
+  
+  .add-comment textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 16px;
+  }
+  
+  .add-comment button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .add-comment button:hover {
+    background-color: #555;
+  }
+  #ana-yemek-app ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+}
+
+#ana-yemek-app ul li {
+    margin: 10px;
+    flex: 1 1 calc(25% - 20px); /* Her öğe, ebeveynin genişliğinin %25'ini kaplayacak */
+    box-sizing: border-box;
+}
+
+#ana-yemek-app ul li img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+#ana-yemek-app ul li h2 {
+    text-align: center;
+}
+.container-recipe-form {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* So that width includes padding */
+}
+
+textarea {
+  resize: vertical; /* Allows the user to vertically resize the textarea */
+}
+.modal {
+    display: none; /* Modal is hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .recipe-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-item h3 {
+    color: #555;
+    margin: 0 0 10px 0;
+  }
+  
+  .recipe-item p {
+    color: #666;
+    margin: 0 0 10px 0;
+  }
+
+  .container-my-recipes {
+    background-color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }  

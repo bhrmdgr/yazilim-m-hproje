@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="english">
+
+<head>
+    <title>exported project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <link href="./index.css" rel="stylesheet" />
+    <script src="./index.js" defer></script>
+
+</head>
+<header>
+    <div class="desktop1-container">
+        <div class="desktop1-desktop1">
+            <div class="header">
+                <img src="tasarım-figma/Yemek Yap (1).png" alt="Logo" class="desktop1-logo"
+                    onclick="redirectToIndex()" />
+                <div id="search-app">
+                    <input v-model="aramaTerimi" placeholder="Yemek ara..." @keyup.enter="aramaYap" />
+
+                </div>
+                <div class="auth-buttons" id="auth-buttons">
+                    <button class="register-button" onclick="window.location.href='kayitol.html'">Kayıt Ol</button>
+                    <button class="login-button" onclick="window.location.href='girisyap.html'">Giriş Yap</button>
+                </div>
+                <button class="account-button" id="account-button" style="display: none;" onclick="window.location.href='account.html'">Hesabım</button>
+            </div>
+            <div class="desktop1-categories">
+                <span class="desktop1-kategori1"><a href="ana-yemek.html#ana-yemek">Ana Yemek</a></span>
+                <span class="desktop1-kategori2"><a href="corba.html#corba">Çorba</a></span>
+                <span class="desktop1-kategori3"><a href="kahvaltilik.html#kahvaltılık">Kahvaltılık</a></span>
+                <span class="desktop1-kategori4"><a href="tatli.html#tatlı">Tatlı Tarifleri</a></span>
+                <span class="desktop1-kategori5"><a href="hamurisi.html#hamur-isi">Hamur İşi</a></span>
+                <span class="desktop1-kategori6"><a href="salata-meze.html#salata-meze">Salata & Meze</a></span>
+                <span class="desktop1-kategori7"><a href="icecek.html#icecek">İçecek</a></span>
+                <span class="desktop1-kategori8"><a href="oneri.html#bugün-ne-pisirsem">Bugün Ne Pişirsem?</a></span>
+            </div>
+
+</header>
+
+<body>
+
+    <div class="basliklar">
+        <div id="oneri-app">
+            <div class="corba">Bugün Ne Pişirsem?</div>
+            <div class="hr-line"></div>
+            <br>
+            <div class="category-row">
+                <div v-for="tarif in tarifler" :key="tarif.TarifID" class="category">
+                    <a :href="'tarif-detay.html?id=' + tarif.TarifID">
+                        <img v-if="tarif.TarifResim" :src="'data:image/jpeg;base64,' + tarif.TarifResim" :alt="tarif.TarifAdi" class="food-image">
+                        <span class="food-name">{{ tarif.TarifAdi }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer">
+            <div class="contact-info">
+                <span class="form-title">BİZE ULAŞIN!</span>
+                <hr class="hr-line">
+                <div class="info-detail"><strong>Adres:</strong> Isparta, Merkez</div>
+                <div class="info-detail"><strong>Telefon:</strong> 544-194-81-23</div>
+                <div class="info-detail"><strong>E-posta:</strong> ayssenurkurt@gmail.com</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/ayssenurkurt/" target="_blank"><img
+                            src="tasarım-figma/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com/ayssenurkurt/" target="_blank"><img
+                            src="tasarım-figma/instagram.png" alt="Instagram"></a>
+
+                    <a href="https://wa.me/905441948123" target="_blank"><img src="tasarım-figma/whatsapp.png"
+                            alt="WhatsApp"></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <span class="form-title">İLETİŞİM FORMU</span>
+                <hr class="hr-line">
+                <span class="form-description">Öneri ve şikayetlerinizi bize iletebilirsiniz.</span>
+                <form>
+                  <input type="text" name="isim" placeholder="İsim Soyisim.." required />
+                  <input type="email" name="email" placeholder="E-posta adresi..." required />
+                  <textarea name="mesaj" placeholder="Mesajınızı Giriniz..." required></textarea>
+                  <button type="submit" class="gönder-button">Gönder</button>
+                </form>
+              </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+         new Vue({
+            el: '#oneri-app',
+            data: {
+                tarifler: []
+            },
+            created() {
+                console.log('Vue instance created. Fetching recipes...');
+                this.fetchTarifler();
+            },
+            methods: {
+                fetchTarifler() {
+                    console.log('Fetching recipes from /bugun-ne-pisirsem-tarifler');
+                    fetch('http://localhost:3000/bugun-ne-pisirsem-tarifler')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            console.log('Recipes fetched successfully:', data);
+                            this.tarifler = data.map(tarif => {
+                                if (tarif.TarifResim) {
+                                    tarif.TarifResim = btoa(
+                                        new Uint8Array(tarif.TarifResim.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+                                    );
+                                }
+                                return tarif;
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Error fetching recipes:', error);
+                        });
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = localStorage.getItem('token');
+            if (token) {
+                document.getElementById('auth-buttons').style.display = 'none';
+                document.getElementById('account-button').style.display = 'block';
+            }
+        });
+        </script>
+
+
+</body>
+
+</html>

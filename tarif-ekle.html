@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarif Ekle</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="recipe-form-app" class="container-recipe-form">
+    <h2>Yeni Tarif Ekle</h2>
+    <form @submit.prevent="submitRecipe">
+      <label for="TarifAdi">Tarif Adı:</label>
+      <input type="text" id="TarifAdi" v-model="newRecipe.TarifAdi" required>
+
+      <label for="TarifDetayi">Tarif Detayı:</label>
+      <textarea id="TarifDetayi" v-model="newRecipe.TarifDetayi" required></textarea>
+
+      <label for="Malzemeler">Malzemeler:</label>
+      <textarea id="Malzemeler" v-model="newRecipe.Malzemeler" required></textarea>
+
+      <label for="KategoriID">Kategori ID:</label>
+
+      <input type="number" id="KategoriID" v-model="newRecipe.KategoriID" required>
+      <label for="TarifResim">Tarif Resim:</label>
+
+      <input type="file" id="TarifResim" @change="handleFileUpload" required>
+
+      <button type="submit" class="tarifekle-button">Tarifi Ekle</button>
+    </form>
+  </div>
+  <script>
+   new Vue({
+  el: '#recipe-form-app',
+  data: {
+    newRecipe: {
+      TarifAdi: '',
+      TarifDetayi: '',
+      Malzemeler: '',
+      KategoriID: null,
+      TarifResim: null
+    }
+  },
+  methods: {
+    handleFileUpload(event) {
+      this.newRecipe.TarifResim = event.target.files[0];
+    },
+    submitRecipe() {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    alert('Lütfen önce giriş yapın.');
+    window.location.href = 'girisyap.html';
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('TarifAdi', this.newRecipe.TarifAdi);
+  formData.append('TarifDetayi', this.newRecipe.TarifDetayi);
+  formData.append('Malzemeler', this.newRecipe.Malzemeler);
+  formData.append('KategoriID', this.newRecipe.KategoriID);
+  formData.append('TarifResim', this.newRecipe.TarifResim);
+
+  fetch('http://localhost:3000/tarifler', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    },
+    body: formData
+  })
+  .then(response => {
+    if (!response.ok) {
+      return response.text().then(text => { throw new Error(text); });
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (data.message) {
+      alert(data.message);
+      window.location.href = 'index.html';
+    } else if (data.error) {
+      alert(data.error);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Bir hata oluştu: ' + error.message);
+  });
+}
+  }
+});
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Yemek Tarifi</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./tarif-detay.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="desktop1-container">
+            <div class="desktop1-desktop1">
+                <div class="header">
+                    <img src="tasarım-figma/Yemek Yap (1).png" alt="Logo" class="desktop1-logo" onclick="redirectToIndex()" />
+                    <div id="search-app">
+                        <input v-model="aramaTerimi" placeholder="Yemek ara..." @keyup.enter="aramaYap" />
+                    </div>
+                    <div class="auth-buttons" id="auth-buttons">
+                        <button class="register-button" onclick="window.location.href='kayitol.html'">Kayıt Ol</button>
+                        <button class="login-button" onclick="window.location.href='girisyap.html'">Giriş Yap</button>
+                    </div>
+                    <button class="account-button" id="account-button" style="display: none;" onclick="window.location.href='account.html'">Hesabım</button>
+                </div>
+                <div class="desktop1-categories">
+                    <span class="desktop1-kategori1"><a href="ana-yemek.html#ana-yemek">Ana Yemek</a></span>
+                    <span class="desktop1-kategori2"><a href="corba.html#corba">Çorba</a></span>
+                    <span class="desktop1-kategori3"><a href="kahvaltilik.html#kahvaltılık">Kahvaltılık</a></span>
+                    <span class="desktop1-kategori4"><a href="tatli.html#tatlı">Tatlı Tarifleri</a></span>
+                    <span class="desktop1-kategori5"><a href="hamurisi.html#hamur-isi">Hamur İşi</a></span>
+                    <span class="desktop1-kategori6"><a href="salata-meze.html#salata-meze">Salata & Meze</a></span>
+                    <span class="desktop1-kategori7"><a href="icecek.html#icecek">İçecek</a></span>
+                    <span class="desktop1-kategori8"><a href="oneri.html#bugün-ne-pisirsem">Bugün Ne Pişirsem?</a></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="recipe-app" class="recipe-container">
+        <h1 class="recipe-title">{{ tarif.TarifAdi }}</h1>
+        <div class="recipe-images">
+            <img v-if="tarif.TarifResim" :src="'data:image/jpeg;base64,' + tarif.TarifResim" alt="Yemek Fotoğrafı">
+          </div>
+          
+          <button class="favorite-button" id="favori-ekle" @click="addToFavorites">Favoriye Ekle</button>
+          
+          
+          <div class="rating">
+            <h2>Puan Ver</h2>
+            <div class="stars">
+              <span class="star" @click="rateRecipe(1)" :class="{ 'selected': rating >= 1 }">★</span>
+              <span class="star" @click="rateRecipe(2)" :class="{ 'selected': rating >= 2 }">★</span>
+              <span class="star" @click="rateRecipe(3)" :class="{ 'selected': rating >= 3 }">★</span>
+              <span class="star" @click="rateRecipe(4)" :class="{ 'selected': rating >= 4 }">★</span>
+              <span class="star" @click="rateRecipe(5)" :class="{ 'selected': rating >= 5 }">★</span>
+            </div>
+            <p>Ortalama Puan: {{ tarif.ortalamaPuan }}</p> <!-- Puan ortalamasını göster -->
+          </div>
+
+        <div class="ingredients">
+            <h2>Malzemeler</h2>
+            <ul>
+                <li v-for="malzeme in malzemeler" :key="malzeme">{{ malzeme }}</li>
+            </ul>
+        </div>
+        <div class="preparation">
+            <h2>Yapılış</h2>
+            <p>{{ tarif.TarifDetayi }}</p>
+        </div>
+        <div class="comments">
+            <h2>Yorumlar</h2>
+            <ul>
+              <li v-for="comment in comments" :key="comment.YorumId">
+                <div class="comment">
+                  <div class="comment-user">{{ comment.username }}</div>
+                  <div class="comment-content">{{ comment.YorumMetni }}</div>
+                </div>
+              </li>
+            </ul>
+            <div class="add-comment">
+              <textarea v-model="newComment" placeholder="Yorumunuzu buraya girin"></textarea>
+              <button @click="addComment">Yorum Ekle</button>
+            </div>
+        
+        </div>
+    </div>
+</body>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const token = localStorage.getItem('token');
+      if (token) {
+        document.getElementById('auth-buttons').style.display = 'none';
+        document.getElementById('account-button').style.display = 'block';
+      }
+    });
+    
+    function redirectToIndex() {
+      window.location.href = "index.html";
+    }
+    </script>
+</html>

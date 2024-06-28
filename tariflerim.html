@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tariflerim</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="my-recipes-app" class="container-my-recipes">
+        <h2>Tariflerim</h2>
+        <div v-if="tarifler.length === 0">
+            <p>Henüz tarif eklememişsiniz.</p>
+        </div>
+        <div v-for="tarif in tarifler" :key="tarif.TarifID" class="recipe-item">
+            <h3>{{ tarif.TarifAdi }}</h3>
+            <p>{{ tarif.TarifDetayi }}</p>
+            <button @click="openEditModal(tarif)" class="güncelle-button">Tarifi Güncelle</button>
+            <button @click="deleteRecipe(tarif.TarifID)" class="tsil-button">Tarifi Sil</button>
+        </div>
+        
+        <!-- Edit Modal -->
+        <div v-if="showEditModal" class="modal">
+            <div class="modal-content">
+                <span @click="closeEditModal" class="close">&times;</span>
+                <h2>Tarifi Güncelle</h2>
+                <form @submit.prevent="updateRecipe">
+                    <label for="editTarifAdi">Tarif Adı:</label>
+                    <input type="text" id="editTarifAdi" v-model="editRecipeData.TarifAdi" required>
+                    
+                    <label for="editTarifDetayi">Tarif Detayı:</label>
+                    <textarea id="editTarifDetayi" v-model="editRecipeData.TarifDetayi" required></textarea>
+                    
+                    <label for="editMalzemeler">Malzemeler:</label>
+                    <textarea id="editMalzemeler" v-model="editRecipeData.Malzemeler" required></textarea>
+                    
+                    <label for="editKategoriID">Kategori ID:</label>
+                    <input type="number" id="editKategoriID" v-model="editRecipeData.KategoriID" required>
+                    
+                    <button type="submit" class="button">Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#my-recipes-app',
+            data: {
+                tarifler: [],
+                showEditModal: false,
+                editRecipeData: {
+                    TarifID: null,
+                    TarifAdi: '',
+                    TarifDetayi: '',
+                    Malzemeler: '',
+                    KategoriID: null
+                }
+            },
+            created() {
+                this.fetchUserRecipes();
+            },
+            methods: {
+                fetchUserRecipes() {
+                    fetch('http://localhost:3000/kullanici-tarifler', {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Fetched recipes:', data);
+                        this.tarifler = data;
+                    })
+                    .catch(error => {
+                        console.error('Tarifleri getirirken hata oluştu:', error);
+                    });
+                },
+                openEditModal(tarif) {
+                    this.editRecipeData = { ...tarif };
+                    this.showEditModal = true;
+                },
+                closeEditModal() {
+                    this.showEditModal = false;
+                },
+                updateRecipe() {
+                    const { TarifID, TarifAdi, TarifDetayi, Malzemeler, KategoriID } = this.editRecipeData;
+                    console.log('Updating recipe with ID:', TarifID);
+                    fetch(`http://localhost:3000/tarifler/${TarifID}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        },
+                        body: JSON.stringify({ TarifAdi, TarifDetayi, Malzemeler, KategoriID })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Update response:', data);
+                        if (data.message) {
+                            alert(data.message);
+                            this.fetchUserRecipes();
+                            this.closeEditModal();
+                        } else if (data.error) {
+                            alert(data.error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Tarifi güncellerken hata oluştu:', error);
+                    });
+                },
+                deleteRecipe(tarifID) {
+                    fetch(`http://localhost:3000/tarifler/${tarifID}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Delete response:', data);
+                        if (data.message) {
+                            alert(data.message);
+                            this.fetchUserRecipes();
+                        } else if (data.error) {
+                            alert(data.error);
+                        }
+                    })
+                    .catch(error => console.error('Tarifi silerken hata oluştu:', error));
+                }
+            }
+        });
+    </script>
+    <style>
+        .modal {
+            display: block;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>

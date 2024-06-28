@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Favorilerim</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="./favoriler.js" defer></script>
+</head>
+
+<body>
+    <div id="favorites-app" class="recipe-container">
+        <h1>Favori Tariflerim</h1>
+        <div v-if="favoriTarifler.length > 0">
+            <div v-for="tarif in favoriTarifler" :key="tarif.TarifID" class="recipe-card">
+                <h2>{{ tarif.TarifAdi }}</h2>
+                <img v-if="tarif.TarifResim" :src="tarif.TarifResim" alt="Yemek Fotoğrafı">
+                <p>{{ tarif.TarifDetayi }}</p>
+            </div>
+        </div>
+        <div v-else>
+            <p>Henüz favorilere eklediğiniz bir tarif yok.</p>
+        </div>
+    </div>
+    
+    <script>
+        function redirectToIndex() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>
