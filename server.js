@@ -22,6 +22,20 @@ const secretKey = process.env.SECRET_KEY;
 console.log('Secret Key:', secretKey);
 
 app.use('/images', express.static(path.join(__dirname, 'tasarım-figma')));
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+});
+
+db.connect(err => {
+  if (err) {
+    console.error('MySQL bağlantı hatası: ', err);
+    return;
+  }
+  console.log('MySQL Connected...');
+});
 // Kullanıcı kayıt 
 app.post('/kayitol', (req, res) => {
   const { username, email, password } = req.body;
