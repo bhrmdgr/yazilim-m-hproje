@@ -7,7 +7,7 @@
 
 ## 🧾 Proje Tanımı / Project Description
 
-*YemekNet*, kullanıcıların yemek tariflerini keşfedip paylaşabileceği interaktif bir içerik sitesidir. Tarifler kategori bazlı olarak sunulur ve adım adım açıklamalar, malzeme listeleri, görseller hatta video rehberlerle desteklenir. Ayrıca kullanıcılar kendi tariflerini ekleyebilir, yorum yapabilir ve diğer paylaşımları oylayabilir.
+*YemekNet*, kullanıcıların yemek tariflerini keşfedip paylaşabileceği interaktif bir içerik sitesidir. Tarifler kategori bazlı olarak sunulur ve adım adım açıklamalar, malzeme listeleri, görseller hatta video rehberlerle desteklenir. Ayrıca kullanıcılar kendi tariflerini ekleyebilir, yorum yapabilir ve diğer paylaşımları oylayabilir..
 
 *YemekNet* is an interactive content platform where users can discover and share various recipes. Recipes are categorized and supported with step-by-step instructions, ingredient lists, photos, and sometimes video guides. Users can also contribute their own recipes, comment on others, and interact through likes or ratings.
 
