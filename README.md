@@ -27,10 +27,10 @@
 
 | Özellik / Feature                     | Açıklama / Description                                                  |
 |--------------------------------------|-------------------------------------------------------------------------|
-| 📋 Tarif Paylaşımı                   | Kullanıcılar tarif ekleyebilir ve detaylı açıklamalar sunabilir         |
-| 🔍 Kategoriye Göre Tarama           | Yemek türlerine göre tarif arama                                        |
-| 💬 Yorum ve Etkileşim               | Tariflere yorum yapılabilir, sosyal etkileşim sağlanabilir              |
-| 📸 Görsel ve Video Desteği          | Tariflerde fotoğraf ve video içerikleri yer alabilir                    |
+| 📋 Tarif Paylaşımı                   | Kullanıcılar tarif ekleyebilir ve detaylı açıklamalar sunabilir.         |
+| 🔍 Kategoriye Göre Tarama           | Yemek türlerine göre tarif arama.                                        |
+| 💬 Yorum ve Etkileşim               | Tariflere yorum yapılabilir, sosyal etkileşim sağlanabilir.              |
+| 📸 Görsel ve Video Desteği          | Tariflerde fotoğraf ve video içerikleri yer alabilir.                    |
 | 📚 Sağlıklı Yaşam & Mutfak Bilgisi  | Bilgilendirici blog içerikleri                                          |
 
 ---
